@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Mareme Dia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Print ───────────────────────────────────── */
+    @page { size: A4; margin: 0; }
+    @media print {
+      body  { background: none !important; }
+      .page { box-shadow: none !important; margin: 0 !important; }
+      .print-btn { display: none !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+
+    /* ── Screen wrapper ──────────────────────────── */
+    body {
+      background: #c8c8c8;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      color: #1C2B36;
+    }
+    .print-btn {
+      display: block;
+      margin: 16px auto 0;
+      width: 210mm;
+      padding: 10px;
+      text-align: right;
+    }
+    .print-btn button {
+      background: #1D6A5C;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .print-btn button:hover { background: #12263A; }
+
+    /* ── Page A4 ─────────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      display: flex;
+      margin: 0 auto 20px;
+      box-shadow: 0 6px 40px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+
+    /* ════════════════════════════════════════════ */
+    /* SIDEBAR                                      */
+    /* ════════════════════════════════════════════ */
+    .sidebar {
+      width: 67mm;
+      background: #1D6A5C;
+      color: #fff;
+      padding: 9mm 6.5mm 9mm;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5.5mm;
+    }
+
+    /* Photo */
+    .photo-wrap { display: flex; justify-content: center; }
+    .photo {
+      width: 26mm;
+      height: 26mm;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .photo-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      line-height: 1;
+    }
+    .photo-hint {
+      font-size: 5pt;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-top: 1mm;
+      line-height: 1.3;
+    }
+
+    /* Name block */
+    .sb-name { text-align: center; }
+    .sb-name h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 14pt;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .sb-name p {
+      font-size: 7pt;
+      color: rgba(255,255,255,0.6);
+      margin-top: 1.5mm;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* Section header */
+    .sb-section { display: flex; flex-direction: column; gap: 2mm; }
+    .sb-head {
+      font-size: 6pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #C9913D;
+      padding-bottom: 1.5mm;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      margin-bottom: 0.5mm;
+    }
+
+    /* Contact */
+    .ct-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
+      font-size: 7pt;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.4;
+    }
+    .ct-icon {
+      width: 8px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      opacity: 0.7;
+    }
+
+    /* Language */
+    .lang-row { margin-bottom: 2mm; }
+    .lang-row:last-child { margin-bottom: 0; }
+    .lang-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1mm;
+    }
+    .lang-lvl { font-size: 6.5pt; color: rgba(255,255,255,0.5); }
+    .lang-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .lang-fill { height: 100%; background: #C9913D; border-radius: 10px; }
+
+    /* Skill */
+    .sb-cat {
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 1.5mm;
+      margin-bottom: 0.5mm;
+    }
+    .sk-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.82);
+      padding: 1mm 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sk-row:last-child { border-bottom: none; }
+    .sk-dots {
+      font-size: 6pt;
+      letter-spacing: 1.5px;
+      color: #C9913D;
+      flex-shrink: 0;
+    }
+    .sk-dots .empty { color: rgba(255,255,255,0.2); }
+
+    /* ════════════════════════════════════════════ */
+    /* MAIN CONTENT                                 */
+    /* ════════════════════════════════════════════ */
+    .main {
+      flex: 1;
+      padding: 9mm 8.5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+      background: #fff;
+    }
+
+    /* Top header */
+    .main-head {
+      padding-bottom: 3mm;
+      border-bottom: 2px solid #1D6A5C;
+    }
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: #12263A;
+      line-height: 1.2;
+    }
+    .main-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+      margin-top: 2mm;
+    }
+    .tag {
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: #1D6A5C;
+      background: rgba(29,106,92,0.08);
+      padding: 1mm 2.5mm;
+      border-radius: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    /* CV section */
+    .cv-sec { display: flex; flex-direction: column; gap: 2.5mm; }
+    .cv-sec-title {
+      font-size: 6.5pt;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #1D6A5C;
+      padding-bottom: 1.5mm;
+      border-bottom: 1.5px solid rgba(29,106,92,0.2);
+    }
+
+    /* Profile text */
+    .profile-p {
+      font-size: 8pt;
+      color: #3A4E5C;
+      line-height: 1.65;
+    }
+
+    /* Experience entry */
+    .exp {
+      padding-left: 3mm;
+      border-left: 2.5px solid #1D6A5C;
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+    .exp + .exp { margin-top: 2.5mm; }
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2mm;
+    }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #12263A;
+      line-height: 1.2;
+    }
+    .exp-period {
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: #1D6A5C;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 0.5mm;
+    }
+    .exp-org {
+      font-size: 7pt;
+      color: #5A7186;
+      font-style: italic;
+    }
+    .exp-prog {
+      font-size: 6.5pt;
+      color: #1D6A5C;
+      background: rgba(29,106,92,0.07);
+      padding: 1px 5px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .exp-bul { padding: 0; display: flex; flex-direction: column; gap: 0.8mm; }
+    .exp-bul li {
+      font-size: 8pt;
+      color: #3A4E5C;
+      line-height: 1.5;
+      padding-left: 3.5mm;
+      position: relative;
+    }
+    .exp-bul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0; top: 1px;
+      color: #1D6A5C;
+      font-size: 6pt;
+    }
+
+    /* Education entry */
+    .edu {
+      padding-left: 3mm;
+      border-left: 2.5px solid rgba(29,106,92,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5mm;
+    }
+    .edu + .edu { margin-top: 2mm; }
+    .edu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2mm;
+    }
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #12263A;
+    }
+    .edu-year {
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: #1D6A5C;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 0.5mm;
+    }
+    .edu-school { font-size: 7pt; color: #5A7186; font-style: italic; }
+    .edu-detail { font-size: 6.5pt; color: #7A8E9C; margin-top: 0.5mm; }
+
+    /* Certification */
+    .cert {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      padding: 2mm 3mm;
+      background: rgba(25,118,210,0.04);
+      border: 1px solid rgba(25,118,210,0.18);
+      border-left: 3px solid #1976D2;
+      border-radius: 0 4px 4px 0;
+    }
+    .cert-info .cert-name { font-size: 8pt; font-weight: 600; color: #12263A; }
+    .cert-info .cert-org  { font-size: 7pt; color: #5A7186; margin-top: 0.5mm; }
+    .cert-badge {
+      margin-left: auto;
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: #C9913D;
+      background: rgba(201,145,61,0.1);
+      border: 1px solid rgba(201,145,61,0.6);
+      border-radius: 10px;
+      padding: 1.5px 6px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .pulse-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #C9913D;
+      flex-shrink: 0;
+    }
+
+    /* Footer strip */
+    .main-foot {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px solid #DDE8E5;
+      font-size: 6pt;
+      color: #9AABB8;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-btn">
+  <button onclick="window.print()">Imprimer / Exporter PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- ════════ SIDEBAR ════════ -->
+  <aside class="sidebar">
+
+    <div class="photo-wrap">
+      <div class="photo">
+        <!--
+          Pour ajouter la photo :
+          Remplacer le contenu ci-dessous par :
+          <img src="photo.jpg" alt="Mareme Dia" />
+        -->
+        <div class="photo-initials">MD</div>
+        <div class="photo-hint">Photo<br>à venir</div>
+      </div>
+    </div>
+
+    <div class="sb-name">
+      <h1>Mareme<br>Dia</h1>
+      <p>Gestionnaire Comptable &amp; Administrative</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="sb-section">
+      <p class="sb-head">Contact</p>
+      <div class="ct-row">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        maremeawa98@gmail.com
+      </div>
+      <div class="ct-row">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +221 775 430 771
+      </div>
+      <div class="ct-row">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Mbour/Saly, Sénégal
+      </div>
+      <div class="ct-row">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/maréme-dia
+      </div>
+      <div class="ct-row">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp : +221 775 430 771
+      </div>
+    </div>
+
+    <!-- Langues -->
+    <div class="sb-section">
+      <p class="sb-head">Langues</p>
+      <div class="lang-row">
+        <div class="lang-top"><span>Wolof</span><span class="lang-lvl">Maternelle</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-top"><span>Français</span><span class="lang-lvl">B2 / C1</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-top"><span>Anglais</span><span class="lang-lvl">A2</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:30%"></div></div>
+      </div>
+    </div>
+
+    <!-- Compétences -->
+    <div class="sb-section">
+      <p class="sb-head">Compétences</p>
+
+      <p class="sb-cat">Comptabilité &amp; Finance</p>
+      <div class="sk-row"><span>Gestion comptable</span>    <span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Saisie comptable</span>      <span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Rapprochement bancaire</span><span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Analyse financière</span>   <span class="sk-dots">●●●<span class="empty">○○</span></span></div>
+      <div class="sk-row"><span>Suivi budgétaire</span>     <span class="sk-dots">●●●<span class="empty">○○</span></span></div>
+
+      <p class="sb-cat">Outils &amp; Logiciels</p>
+      <div class="sk-row"><span>Odoo (ERP)</span>            <span class="sk-dots">●●●<span class="empty">○○</span></span></div>
+      <div class="sk-row"><span>Microsoft Office</span>      <span class="sk-dots">●●●<span class="empty">○○</span></span></div>
+      <div class="sk-row"><span>Tally <em style="font-size:6pt;opacity:.6">(en cours)</em></span><span class="sk-dots">●●<span class="empty">○○○</span></span></div>
+
+      <p class="sb-cat">Gestion &amp; Opérations</p>
+      <div class="sk-row"><span>Stocks &amp; inventaires</span>  <span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Coordination équipe</span>   <span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Relation fournisseurs</span> <span class="sk-dots">●●●●<span class="empty">○</span></span></div>
+      <div class="sk-row"><span>Négociation</span>           <span class="sk-dots">●●●<span class="empty">○○</span></span></div>
+    </div>
+
+  </aside>
+
+  <!-- ════════ MAIN ════════ -->
+  <main class="main">
+
+    <!-- En-tête -->
+    <div class="main-head">
+      <div class="main-title">Gestionnaire Comptable &amp; Administrative</div>
+      <div class="main-tags">
+        <span class="tag">Comptabilité Générale</span>
+        <span class="tag">Gestion des Stocks</span>
+        <span class="tag">Odoo ERP</span>
+        <span class="tag">Management · 15 pers.</span>
+        <span class="tag">Mission Freelance</span>
+      </div>
+    </div>
+
+    <!-- Profil -->
+    <div class="cv-sec">
+      <p class="cv-sec-title">Profil</p>
+      <p class="profile-p">
+        Comptable et gestionnaire de stocks sous Odoo chez O'Resto Saly, je mène en parallèle une mission externe pour la Boucherie Saint Joseph — tenue de la comptabilité générale, rapprochements bancaires et états financiers pour deux structures. Diplômée en Comptabilité-Finance de l'Université Amadou Hampathé Bâ (2024), j'ai d'abord piloté l'intégralité des opérations d'O'Resto en tant que Gérante — budget, 15 collaborateurs, fournisseurs — avant de choisir une spécialisation comptable. Je recherche un poste où rigueur financière et terrain opérationnel se combinent.
+      </p>
+    </div>
+
+    <!-- Expérience -->
+    <div class="cv-sec">
+      <p class="cv-sec-title">Expérience Professionnelle</p>
+
+      <div class="exp">
+        <div class="exp-top">
+          <div class="exp-role">Comptable &amp; Gestionnaire de Stocks</div>
+          <div class="exp-period">Fév. 2026 – Présent</div>
+        </div>
+        <div class="exp-org">O'Resto Saly &nbsp;·&nbsp; Mbour/Saly, Sénégal</div>
+        <span class="exp-prog">↑ Spécialisation comptable choisie après 14 mois en tant que Gérante (Déc. 2024 – Fév. 2026)</span>
+        <ul class="exp-bul">
+          <li>Tenu la comptabilité générale sous Odoo : saisie des opérations, lettrage et rapprochements bancaires.</li>
+          <li>Géré les inventaires et le suivi des stocks sous Odoo : contrôle des écarts, ajustements et coordination des cycles d'approvisionnement avec les fournisseurs.</li>
+          <li>Produit les rapports financiers périodiques à destination de la direction.</li>
+          <li>En tant que Gérante : supervisé 15 collaborateurs, piloté le budget mensuel et géré les relations fournisseurs sur 14 mois.</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-top">
+          <div class="exp-role">Comptable Externe</div>
+          <div class="exp-period">2025 – Présent</div>
+        </div>
+        <div class="exp-org">Boucherie Saint Joseph &nbsp;·&nbsp; Saly &nbsp;·&nbsp; <em>Mission freelance</em></div>
+        <ul class="exp-bul">
+          <li>Tenu la comptabilité générale et assuré le suivi des flux financiers de l'établissement.</li>
+          <li>Produit les états financiers périodiques pour appuyer les décisions de gestion.</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-top">
+          <div class="exp-role">Stagiaire Comptable</div>
+          <div class="exp-period">Oct. – Nov. 2024</div>
+        </div>
+        <div class="exp-org">GTI Expertise &nbsp;·&nbsp; Dakar &nbsp;·&nbsp; <em>Stage en cabinet</em></div>
+        <ul class="exp-bul">
+          <li>Participé à la comptabilité générale et analytique d'un portefeuille de clients PME.</li>
+          <li>Saisie et contrôle des pièces comptables, rapprochements bancaires et suivi des comptes tiers.</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-top">
+          <div class="exp-role">Commercial</div>
+          <div class="exp-period">Août – Sept. 2024</div>
+        </div>
+        <div class="exp-org">Nsia Vie Assurance &nbsp;·&nbsp; Dakar</div>
+        <ul class="exp-bul">
+          <li>Exploré le secteur financier sous un angle commercial pour acquérir une compréhension du cycle client en complément de la formation comptable.</li>
+          <li>Analysé les besoins individuels et négocié des contrats — compétences directement transférables à la gestion fournisseurs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Formation -->
+    <div class="cv-sec">
+      <p class="cv-sec-title">Formation</p>
+
+      <div class="edu">
+        <div class="edu-top">
+          <div class="edu-degree">Licence en Comptabilité-Finance</div>
+          <div class="edu-year">2024</div>
+        </div>
+        <div class="edu-school">Université Amadou Hampathé Bâ &nbsp;·&nbsp; Dakar, Sénégal</div>
+        <div class="edu-detail">Comptabilité générale &amp; analytique · Analyse financière · Logiciels comptables · Prise de décision</div>
+      </div>
+
+      <div class="edu">
+        <div class="edu-top">
+          <div class="edu-degree">Baccalauréat Général – Série S2</div>
+          <div class="edu-year">2018</div>
+        </div>
+        <div class="edu-school">Lycée Demba Diop &nbsp;·&nbsp; Mbour, Sénégal</div>
+      </div>
+    </div>
+
+    <!-- Certification -->
+    <div class="cv-sec">
+      <p class="cv-sec-title">Certification en cours</p>
+      <div class="cert">
+        <div class="cert-info">
+          <div class="cert-name">Tally Bookkeeping</div>
+          <div class="cert-org">Coursera &nbsp;·&nbsp; 2026</div>
+        </div>
+        <div class="cert-badge">
+          <div class="pulse-dot"></div>
+          En cours
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="main-foot">
+      maremeawa98@gmail.com &nbsp;·&nbsp; +221 775 430 771 (WhatsApp) &nbsp;·&nbsp; linkedin.com/in/maréme-dia &nbsp;·&nbsp; Mbour/Saly, Sénégal
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
