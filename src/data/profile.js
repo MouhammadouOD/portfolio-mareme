@@ -20,7 +20,7 @@ export const profile = {
   linkedin:  "https://www.linkedin.com/in/mar%C3%A9me-dia-29149123b/",
   whatsapp:  "https://wa.me/221775430771",
   photo:    null,
-  cvPath:   "/assets/CV_Mareme_Dia.pdf",
+  cvPath:   "assets/CV_Mareme_Dia.pdf",
 
   about: {
     fr: "Comptable et gestionnaire de stocks sous Odoo chez O'Resto Saly, je mène en parallèle une mission externe pour la Boucherie Saint Joseph — deux structures où je tiens la comptabilité générale, les rapprochements bancaires et les états financiers. Diplômée en Comptabilité-Finance de l'Université Amadou Hampathé Bâ (2024), j'ai d'abord piloté l'intégralité des opérations d'O'Resto en tant que Gérante — budget, 15 collaborateurs, fournisseurs — avant de choisir une spécialisation comptable. Je cherche un poste où rigueur financière et terrain opérationnel se combinent.",
